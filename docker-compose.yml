@@ -2,7 +2,9 @@ version: "3.9"
 services:
   datathon_workwithdata:
     tty: true
-    build: .
+    build:
+      context: .
+      shm_size: 256mb
     ports:
       - "4000:4000"
       - "8888:8888" #Notebook port
@@ -14,13 +16,11 @@ services:
 
     networks:
       - datathon_workwithdata_network
-    #  environment:
-    #    HOST: ${HOST}
-    #    ROOT_PWD: ${ROOT_PWD}
-    #    DB: ${DB}
-    #    USER: ${USERDB}
-    #    USER_PWD: ${USER_PWD}
+    environment:
+      login: ${LOGIN}
+      password: ${PASSWORD}
 
+    shm_size: 512mb
     # deploy:
     #    resources:
     #       reservations:
