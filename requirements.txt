@@ -12,6 +12,9 @@
 ### ML Librairies
     sklearn 
     tensorflow == 2.5.0
+### Scrapping
+    beautifulsoup4
+    selenium
 ###Database
     # mysql.connector == 2.2.9
     # pyodbc == 4.0.32
