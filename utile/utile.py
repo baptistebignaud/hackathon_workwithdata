@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 
 def plot_text_feature(
@@ -71,3 +72,16 @@ def plot_continous_feature(
     ax[1].boxplot(df[feat])
     ax[1].set_yscale("log")
     ax[1].set_title(f"Boxplot of {feat}")
+
+
+def config_parse() -> dict:
+    """
+    The aim of this function is to get the configuration to connect to the database thanks to environment variables
+    returns -> dictio: The dictionnary with the configuration for the database
+    """
+    dictio = {}
+    value = dict(os.environ).items()
+    for val in value:
+        dictio[val[0]] = val[1]
+
+    return dictio
