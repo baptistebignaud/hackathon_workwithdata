@@ -39,7 +39,11 @@ def plot_text_feature(
 
 
 def plot_continous_feature(
-    df: pd.DataFrame, feat: str, k: int = 20, Log: bool = False
+    df: pd.DataFrame,
+    feat: str,
+    k: int = 20,
+    Log: bool = False,
+    logx=True,
 ) -> None:
     """
     This function's aim is to plot the repartition of a numeric feature of the data
@@ -53,26 +57,17 @@ def plot_continous_feature(
     sns.set_theme()
 
     # Subplot
-    fig, ax = plt.subplots(1, 4)
+    fig, ax = plt.subplots(1, 2)
     fig.set_figheight(15)
     fig.set_figwidth(25)
 
     # Plot histogramm of feature
-    ax[0].set_xscale("log")
+    if logx:
+        ax[0].set_xscale("log")
     ax[0].hist(df[feat], bins=100, log=Log)
     ax[0].set_title(f"Histogramm of {feat}")
 
-    # Plot repartition function of feature
-    sns.kdeplot(df[feat], bw_method=0.1, ax=ax[1])
-    ax[1].set_xscale("log")
-    ax[1].set_title(f"Repartition funtion of {feat}")
-
-    # Plot cumulative repartition function of feature
-    sns.kdeplot(df[feat], bw_method=0.1, cumulative=True, ax=ax[2])
-    ax[2].set_xscale("log")
-    ax[2].set_title(f"Cumulative repartition funtion of {feat}")
-
     # Boxplot of feature
-    ax[3].boxplot(df[feat])
-    ax[3].set_yscale("log")
-    ax[3].set_title(f"Boxplot of {feat}")
+    ax[1].boxplot(df[feat])
+    ax[1].set_yscale("log")
+    ax[1].set_title(f"Boxplot of {feat}")
