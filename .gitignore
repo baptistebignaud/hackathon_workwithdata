@@ -2,3 +2,4 @@ utile/__pycache__/*
 escp_training_set.csv
 notebooks/.ipynb_checkpoints
 .env
+data
