@@ -17,10 +17,12 @@ services:
     networks:
       - datathon_workwithdata_network
     environment:
-      login: ${LOGIN}
-      password: ${PASSWORD}
+      login_linkedin: ${LOGIN_LINKEDIN}
+      password_linkedin: ${PASSWORD_LINKEDIN}
+      login_insta: ${LOGIN_INSTA}
+      password_insta: ${PASSWORD_INSTA}
 
-    shm_size: 512mb
+    shm_size: "2gb"
     # deploy:
     #    resources:
     #       reservations:
